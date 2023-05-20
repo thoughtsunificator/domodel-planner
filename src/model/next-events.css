@@ -1,0 +1,7 @@
+#next-events {
+	background-color: #201818;
+	border-bottom: 4px solid #343c27;
+	display: grid;
+	min-height: 100%;
+	place-content: center;
+}

@@ -1,0 +1,46 @@
+@import "css-generics";
+@import "./model/**/*.css"; /* handled at build time by postcss-easy-import */
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background-color: black;
+	color: white;
+	font-family: Arial;
+}
+
+a {
+	color: #ff602fc2;
+}
+
+input, select, button, textarea {
+	background-color: #201818;
+	color: white;
+	padding: 5px;
+	border: 1px solid #8c8282;
+	font-family: Arial;
+}
+
+button {
+	cursor: pointer;
+}
+
+button:not(:disabled):hover {
+	opacity: 0.5;
+}
+
+.pagination-controls {
+	margin-bottom: var(--SIZE_MEDIUM)
+}
+
+.pagination-controls button {
+	padding: 10px!important;
+	background-color: #46572c!important
+}
+
+.pagination-controls button:disabled {
+	background-color: #12170b!important
+}
+

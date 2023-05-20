@@ -1,0 +1,21 @@
+#weeks .day:not(.content) .events:before {
+	content: "Click to add a new event";
+	color: gray;
+	display: grid;
+	place-items: center;
+	place-content: center;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 0;
+}
+
+#weeks .day .events {
+	display: grid;
+	position: relative;
+	grid-column: span 2;
+	grid-auto-rows: max-content;
+	grid-gap: 10px;
+	padding: 10px;
+	background-color: #402020;
+}

@@ -1,0 +1,12 @@
+.date-browser {
+    display: grid; 
+    grid-gap: 15px; 
+    grid-auto-flow: column;
+    justify-content: center;
+    padding: 10px 0px;
+}
+
+.date-browser > .controls, .date-browser > .controls > div {
+    display: grid; 
+    grid-auto-flow: column
+}

@@ -1,7 +1,6 @@
 import test from "ava"
 import { JSDOM } from "jsdom"
 import { Core, Binding } from "domodel"
-import { Popup } from "@domodel/popup"
 
 import SettingsModel from "../../../src/model/view/diary/settings.js"
 
@@ -25,8 +24,7 @@ test("SettingsBinding instance", (test) => {
 
 test("SettingsBinding onCreated", (test) => {
 	const diary = new Diary()
-	const popup = new Popup()
-	const binding = new SettingsBinding({ diary, popup })
+	const binding = new SettingsBinding({ diary })
 	test.context.rootBinding.run(SettingsModel, { binding })
 	test.pass()
 })

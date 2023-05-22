@@ -1,13 +1,18 @@
-export default data => ({
-	tagName: "td",
-	className: `day${data.date.getMonth() === new Date().getMonth() && data.date.getDate() === new Date().getDate() && data.date.getFullYear() === new Date().getFullYear() ? ' current' : '' }${data.grayed ? " grayed" : ""}`,
+import EventsModel from "./events.js"
+import EventsBinding from "./events.binding.js"
+
+export default day => ({
+	tagName: "div",
+	className: `day${day.today ? ' current' : '' }${day.previousMonth ? " grayed" : ""}`,
 	children: [
 		{
 			tagName: "div",
-			textContent: data.date.getDate()
+			className: "date",
+			textContent: day.date.getDate()
 		},
 		{
-			tagName: "div",
+			model: EventsModel,
+			binding: EventsBinding
 		}
 	]
 })

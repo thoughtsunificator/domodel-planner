@@ -1,9 +1,4 @@
 import { Binding } from "domodel"
-import { PopupBinding, Popup } from "@domodel/popup"
-
-import SettingsModel from "./diary/settings.js"
-
-import SettingsBinding from "./diary/settings.binding.js"
 
 import DiaryViewEventListener from "./diary.event.js"
 
@@ -27,7 +22,6 @@ class DiaryViewBinding extends Binding {
 	 */
 	constructor(properties) {
 		super(properties, new DiaryViewEventListener(properties.router.view))
-		this.popup = new Popup()
 		this.textFileURL = null
 		this.interval = null
 		this.inactivity_timer_delay = this.properties.inactivity_timer_delay || DiaryViewBinding.INACTIVITY_TIMER_DELAY
@@ -36,6 +30,8 @@ class DiaryViewBinding extends Binding {
 	onCreated() {
 
 		const { diary, router } = this.properties
+
+		let menuOpened = false
 
 		this.listen(diary, "logout", () => {
 			this.stopInactivityTimer()
@@ -49,13 +45,20 @@ class DiaryViewBinding extends Binding {
 			this.restartInactivityTimer()
 		})
 
-		this.identifier.menu.addEventListener("click", () => {
-			router.view.emit("openSettings")
+		this.identifier.menuButton.addEventListener("click", () => {
+			if (menuOpened) {
+				this.identifier.menu.classList.remove("opened")
+			} else {
+				this.identifier.menu.classList.add("opened")
+			}
+			menuOpened = !menuOpened
 		})
+
+		this.identifier.export.addEventListener("click", (() => router.view.emit("export")))
+		this.identifier.import.addEventListener("click", (() => router.view.emit("import")))
 
 		this.startInactivityTimer()
 
-		this.run(SettingsModel, { binding: new SettingsBinding({ popup: this.popup  }) })
 	}
 
 	startInactivityTimer() {

@@ -1,7 +1,6 @@
 import test from "ava"
 import { JSDOM } from "jsdom"
 import { Core, Binding, Observable } from "domodel"
-import { PopupModel, Popup } from "@domodel/popup"
 import { Router } from "@domodel/router"
 
 import DiaryViewModel from "../../src/model/view/diary.js"
@@ -43,7 +42,6 @@ test("DiaryViewBinding onCreated", (test) => {
 	test.deepEqual(binding._children[1].root, binding.identifier.content)
 	test.true(binding._children[0] instanceof CalendarBinding)
 	test.true(binding._children[1] instanceof SettingsBinding)
-	test.true(binding._children[1].properties.popup instanceof Popup)
 	test.context.window.clearInterval(binding.interval)
 })
 

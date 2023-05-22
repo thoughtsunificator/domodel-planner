@@ -1,6 +1,7 @@
 import { Observable } from "domodel"
 
 import Calendar from "./calendar.js"
+import Events from "./events.js"
 
 /**
  * @global

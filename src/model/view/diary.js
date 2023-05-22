@@ -14,24 +14,32 @@ export default data => ({
 			children: [
 				{
 					tagName: "button",
-					identifier: "menu",
+					identifier: "menuButton",
 					title: "Menu",
-					className: "menu",
 					textContent: "⚙️",
 				},
+				{
+					tagName: "div",
+					className: "menu",
+					identifier: "menu",
+					children: [
+						{
+							tagName: "button",
+							textContent: "Export",
+							identifier: "export"
+						},
+						{
+							tagName: "button",
+							textContent: "Import",
+							identifier: "import"
+						}
+					]
+				}
 			]
 		},
 		{
-			tagName: "div",
-			className: "content",
-			identifier: "content",
-			style: "display: contents",
-			children: [
-				{
-					model: CalendarModel,
-					binding: CalendarBinding
-				}
-			]
+			model: CalendarModel,
+			binding: CalendarBinding
 		}
 	]
 })

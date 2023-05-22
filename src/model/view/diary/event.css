@@ -1,0 +1,6 @@
+#weeks .day .editor {
+	background-color: #402020;
+	border: 1px solid #8c8282;
+	border-bottom: 2px solid #574e45;
+	padding: var(--SIZE_XXS);
+}

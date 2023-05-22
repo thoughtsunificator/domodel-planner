@@ -20,9 +20,9 @@ class DayBinding extends Binding {
 
 		const { diary, day } = this.properties
 
-		// if(diary.events.byDate(day.date).length >= 1) {
-		// 	this.root.classList.add("content")
-		// }
+		if(diary.calendar.events.byDate(day.date).length >= 1) {
+			this.root.classList.add("content")
+		}
 
 		this.root.addEventListener("click", () => diary.calendar.emit("setDate", { date: day.date }))
 

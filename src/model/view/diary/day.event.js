@@ -6,29 +6,18 @@ import { EventListener } from "domodel"
 class DayEventListener extends EventListener {
 
 	/**
-	 * @event DayEventListener#updateIndicator
-	 * @property {boolean} toggle
-	 */
-	updateIndicator(toggle) {
-		if(toggle) {
-			this.root.classList.add("content")
-		} else {
-			this.root.classList.remove("content")
-		}
-	}
-
-	/**
 	 * @event DayEventListener#select
 	 */
 	select() {
-		this.root.classList.add("active")
+		// TODO add new Event with RTE and persist on blur if title is not empty
+		// this.root.classList.add("active")
 	}
 
 	/**
 	 * @event DayEventListener#unselect
 	 */
 	unselect() {
-		this.root.classList.remove("active")
+		// this.root.classList.remove("active")
 	}
 
 }

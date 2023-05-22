@@ -28,7 +28,6 @@
 		"stylelint-config-standard": "^24.0.0"
 	},
 	"dependencies": {
-		"@domodel/popup": "^1.0.13",
 		"@domodel/router": "^1.0.50",
 		"css-generics": "^1.0.8",
 		"domodel": "^1.0.56"

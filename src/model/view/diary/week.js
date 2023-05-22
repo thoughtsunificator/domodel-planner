@@ -1,4 +1,4 @@
 export default {
 	className: "week",
-	tagName: "tr"
+	tagName: "div",
 }

@@ -1,1 +1,0 @@
-# domodel-skeleton

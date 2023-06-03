@@ -6,7 +6,7 @@ import Events from "./events.js"
 /**
  * @global
  */
-class Diary extends Observable {
+class Planner extends Observable {
 
 	/**
 	 * @param {Date} date
@@ -54,4 +54,4 @@ class Diary extends Observable {
 
 }
 
-export default Diary
+export default Planner

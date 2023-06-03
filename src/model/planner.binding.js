@@ -1,13 +1,13 @@
 import { Binding } from "domodel"
 
-import DiaryViewEventListener from "./diary.event.js"
+import PlannerViewEventListener from "./planner.event.js"
 
-import Diary from "../../object/diary.js"
+import Planner from "../object/planner.js"
 
 /**
  * @global
  */
-class DiaryViewBinding extends Binding {
+class PlannerViewBinding extends Binding {
 
 	/**
 	 * @readonly
@@ -17,23 +17,22 @@ class DiaryViewBinding extends Binding {
 
 	/**
 	 * @param {object} properties
-	 * @param {Diary}  properties.diary
-	 * @param {Router} properties.router
+	 * @param {Planner}  properties.planner
 	 */
 	constructor(properties) {
-		super(properties, new DiaryViewEventListener(properties.router.view))
+		super(properties, new PlannerViewEventListener(properties.planner))
 		this.textFileURL = null
 		this.interval = null
-		this.inactivity_timer_delay = this.properties.inactivity_timer_delay || DiaryViewBinding.INACTIVITY_TIMER_DELAY
+		this.inactivity_timer_delay = this.properties.inactivity_timer_delay || PlannerViewBinding.INACTIVITY_TIMER_DELAY
 	}
 
 	onCreated() {
 
-		const { diary, router } = this.properties
+		const { planner } = this.properties
 
 		let menuOpened = false
 
-		this.listen(diary, "logout", () => {
+		this.listen(planner, "logout", () => {
 			this.stopInactivityTimer()
 		})
 
@@ -54,15 +53,15 @@ class DiaryViewBinding extends Binding {
 			menuOpened = !menuOpened
 		})
 
-		this.identifier.export.addEventListener("click", (() => router.view.emit("export")))
-		this.identifier.import.addEventListener("click", (() => router.view.emit("import")))
+		this.identifier.export.addEventListener("click", (() => planner.emit("export")))
+		this.identifier.import.addEventListener("click", (() => planner.emit("import")))
 
 		this.startInactivityTimer()
 
 	}
 
 	startInactivityTimer() {
-		this.interval = this.root.ownerDocument.defaultView.setInterval(() => this.properties.diary.emit("logout"), this.inactivity_timer_delay)
+		this.interval = this.root.ownerDocument.defaultView.setInterval(() => this.properties.planner.emit("logout"), this.inactivity_timer_delay)
 	}
 
 	stopInactivityTimer() {
@@ -76,4 +75,4 @@ class DiaryViewBinding extends Binding {
 
 }
 
-export default DiaryViewBinding
+export default PlannerViewBinding

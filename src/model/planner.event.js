@@ -3,43 +3,43 @@ import { EventListener } from "domodel"
 /**
  * @global
  */
-class DiaryViewEventListener extends EventListener {
+class PlannerViewEventListener extends EventListener {
 
 	/**
-	 * @event DiaryViewEventListener#exported
+	 * @event PlannerViewEventListener#exported
 	 *
 	*/
 
 	/**
-	 * @event DiaryViewEventListener#imported
+	 * @event PlannerViewEventListener#imported
 	 *
 	*/
 
 	/**
-	 * @event DiaryViewEventListener#export
+	 * @event PlannerViewEventListener#export
 	 */
 	export() {
-		const { diary } = this.properties
+		const { planner } = this.properties
 		if (this.textFileURL !== null) {
 			this.root.ownerDocument.defaultView.URL.revokeObjectURL(this.textFileURL)
 		}
-		const blob = new Blob( [ diary.events.toString() ], {
+		const blob = new Blob( [ planner.events.toString() ], {
 			type: "text/plain"
 		})
 		const date = new Date()
 		this.textFileURL = URL.createObjectURL( blob )
 		const anchor = this.root.ownerDocument.createElement("a")
 		anchor.href = this.textFileURL
-		anchor.download = `backup-domodel-diary-${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}.txt`
+		anchor.download = `backup-domodel-planner-${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}.txt`
 		anchor.click()
-		diary.emit("exported")
+		planner.emit("exported")
 	}
 
 	/**
-	 * @event DiaryViewEventListener#import
+	 * @event PlannerViewEventListener#import
 	 */
 	import() {
-		const { diary } = this.properties
+		const { planner } = this.properties
 		const inputFileNode = this.root.ownerDocument.createElement("input")
 		inputFileNode.type = "file"
 		inputFileNode.style.display = "none"
@@ -47,11 +47,11 @@ class DiaryViewEventListener extends EventListener {
 			const reader = new FileReader()
 			reader.addEventListener("load", () => {
 				try {
-					// const bytes = CryptoES.AES.decrypt(reader.result, diary.password)
+					// const bytes = CryptoES.AES.decrypt(reader.result, planner.password)
 					// const decryptedData = JSON.parse(bytes.toString(CryptoES.enc.Utf8))
-					// diary.events.emit("clear")
-					decryptedData.forEach(event => diary.events.add(event.content, new Date(event.date)))
-					diary.emit("imported")
+					// planner.events.emit("clear")
+					decryptedData.forEach(event => planner.events.add(event.content, new Date(event.date)))
+					planner.emit("imported")
 				} catch(ex)  {
 					console.error(ex)
 					alert("Unable to import this backup. It might be due to the current password not matching with the backup.")
@@ -65,7 +65,7 @@ class DiaryViewEventListener extends EventListener {
 	}
 
 	/**
-	 * @event DiaryViewEventListener#openSettings
+	 * @event PlannerViewEventListener#openSettings
 	 */
 	openSettings() {
 		this.popup.emit("show")
@@ -73,4 +73,4 @@ class DiaryViewEventListener extends EventListener {
 
 }
 
-export default DiaryViewEventListener
+export default PlannerViewEventListener

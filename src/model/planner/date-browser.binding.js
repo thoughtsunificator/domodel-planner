@@ -4,9 +4,9 @@ export default class extends Binding {
     
     onCreated() {
     
-        const { diary } = this.properties
+        const { planner } = this.properties
         
-		const { calendar } = diary
+		const { calendar } = planner
 
         calendar.listen("setDate", (data) => {
             const date = new Date(data.date)
@@ -23,7 +23,7 @@ export default class extends Binding {
     }
 
     getDateByMonthIndex(month) {
-		const date = this.properties.diary.calendar.date
+		const date = this.properties.planner.calendar.date
 		if(month > this.identifier.month.options.length - 1) {
 			month = 0
 			date.setYear(parseInt(this.identifier.year.value) + 1)

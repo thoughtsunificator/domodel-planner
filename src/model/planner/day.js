@@ -3,7 +3,7 @@ import EventsBinding from "./events.binding.js"
 
 export default day => ({
 	tagName: "div",
-	className: `day${day.today ? ' current' : '' }${day.previousMonth ? " grayed" : ""}`,
+	className: `day${day.today ? ' current' : '' }${day.nextOrPreviousMonth ? " grayed" : ""}`,
 	children: [
 		{
 			tagName: "div",

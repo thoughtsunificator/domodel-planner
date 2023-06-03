@@ -4,7 +4,7 @@ export default class extends Binding {
     
     onCreated() {
     
-        const { diary, event, day } = this.properties
+        const { planner, event, day } = this.properties
 
         this.identifier.editor.addEventListener("input", () => {
             event.title = this.identifier.editor.textContent

@@ -1,5 +1,5 @@
 import { EventListener } from "domodel"
-import Event from "../../../object/event.js"
+import Event from "../../object/event.js"
 
 import EventModel from "./event.js"
 import EventBinding from "./event.binding.js"
@@ -28,7 +28,7 @@ class EventsEventListener extends EventListener {
 	 * @property {Date}    data.date
 	 */
 	save(data) {
-        this.properties.diary.calendar.events.emit("add", data)
+        this.properties.planner.calendar.events.emit("add", data)
 	}
 
 }

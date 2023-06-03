@@ -2,11 +2,11 @@ import test from "ava"
 import { JSDOM } from "jsdom"
 import { Core, Binding } from "domodel"
 
-import SettingsModel from "../../../src/model/view/diary/settings.js"
+import SettingsModel from "../../src/model/view/planner/settings.js"
 
-import SettingsBinding from "../../../src/model/view/diary/settings.binding.js"
+import SettingsBinding from "../../src/model/view/planner/settings.binding.js"
 
-import Diary from "../../../src/object/diary.js"
+import Planner from "../../src/object/planner.js"
 
 const RootModel = { tagName: "div" }
 
@@ -23,8 +23,8 @@ test("SettingsBinding instance", (test) => {
 })
 
 test("SettingsBinding onCreated", (test) => {
-	const diary = new Diary()
-	const binding = new SettingsBinding({ diary })
+	const planner = new Planner()
+	const binding = new SettingsBinding({ planner })
 	test.context.rootBinding.run(SettingsModel, { binding })
 	test.pass()
 })

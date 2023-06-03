@@ -1,6 +1,7 @@
 {
 	"name": "domodel-planner",
 	"type": "module",
+	"description": "Minimalist planner app",
 	"devDependencies": {
 		"@esm-bundle/chai": "^4.3.4-fix.0",
 		"@rollup/plugin-node-resolve": "^15.0.2",
@@ -28,7 +29,6 @@
 		"stylelint-config-standard": "^24.0.0"
 	},
 	"dependencies": {
-		"@domodel/router": "^1.0.50",
 		"css-generics": "^1.0.8",
 		"domodel": "^1.0.56"
 	},

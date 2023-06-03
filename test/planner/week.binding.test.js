@@ -2,15 +2,15 @@ import test from "ava"
 import { JSDOM } from "jsdom"
 import { Core, Binding } from "domodel"
 
-import WeekModel from "../../../src/model/view/diary/week.js"
+import WeekModel from "../../src/model/view/planner/week.js"
 
-import WeekBinding from "../../../src/model/view/diary/week.binding.js"
+import WeekBinding from "../../src/model/view/planner/week.binding.js"
 
-import Diary from "../../../src/object/diary.js"
-import Week from "../../../src/object/week.js"
-import Day from "../../../src/object/day.js"
-import DayModel from "../../../src/model/view/diary/day.js"
-import DayBinding from "../../../src/model/view/diary/day.binding.js"
+import Planner from "../../src/object/planner.js"
+import Week from "../../src/object/week.js"
+import Day from "../../src/object/day.js"
+import DayModel from "../../src/model/view/planner/day.js"
+import DayBinding from "../../src/model/view/planner/day.binding.js"
 
 const RootModel = { tagName: "div" }
 
@@ -27,7 +27,7 @@ test("WeekBinding instance", (test) => {
 })
 
 test("WeekBinding onCreated", (test) => {
-	const diary = new Diary()
+	const planner = new Planner()
 	const week = new Week()
 	const day1 = new Day(new Date())
 	const day2 = new Day(new Date())
@@ -35,7 +35,7 @@ test("WeekBinding onCreated", (test) => {
 		day1,
 		day2
 	)
-	const binding = new WeekBinding({ diary, week })
+	const binding = new WeekBinding({ planner, week })
 	test.context.rootBinding.run(WeekModel, { binding })
 	test.deepEqual(binding._children[0].model, DayModel(day1))
 	test.deepEqual(binding._children[1].model, DayModel(day2))

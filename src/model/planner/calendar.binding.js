@@ -9,19 +9,19 @@ class CalendarBinding extends Binding {
 
 	/**
 	 * @param {object} properties
-	 * @param {Diary}  properties.diary
+	 * @param {Planner}  properties.planner
 	 */
 	constructor(properties) {
-		super(properties, new CalendarEventListener(properties.diary.calendar))
+		super(properties, new CalendarEventListener(properties.planner.calendar))
 	}
 
 	onCreated() {
 
-		const { diary } = this.properties
+		const { planner } = this.properties
 
-		const { calendar } = diary
+		const { calendar } = planner
 
-		this.listen(diary, "imported", () => {
+		this.listen(planner, "imported", () => {
 			calendar.emit("setDate", { date: calendar.date, rebuild: true })
 		})
 

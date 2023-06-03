@@ -9,10 +9,10 @@ class Day extends Observable {
 	/**
 	 * @param {Date} date
 	 */
-	constructor(date, previousMonth=false) {
+	constructor(date, nextOrPreviousMonth=false) {
 		super()
 		this._date = date
-		this._previousMonth = previousMonth
+		this._nextOrPreviousMonth = nextOrPreviousMonth
 		const today = new Date()
 		this._today = date.getMonth() === today.getMonth() && date.getDate() === today.getDate() && date.getFullYear() === today.getFullYear()
 	}
@@ -30,8 +30,8 @@ class Day extends Observable {
 	 * @readonly
 	 * @type {Date}
 	 */
-	get previousMonth() {
-		return this._previousMonth
+	get nextOrPreviousMonth() {
+		return this._nextOrPreviousMonth
 	}
 
 	/**

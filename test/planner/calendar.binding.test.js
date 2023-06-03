@@ -2,11 +2,11 @@ import test from "ava"
 import { JSDOM } from "jsdom"
 import { Core, Binding } from "domodel"
 
-import CalendarModel from "../../../src/model/view/diary/calendar.js"
+import CalendarModel from "../../src/model/view/planner/calendar.js"
 
-import CalendarBinding from "../../../src/model/view/diary/calendar.binding.js"
+import CalendarBinding from "../../src/model/view/planner/calendar.binding.js"
 
-import Diary from "../../../src/object/diary.js"
+import Planner from "../../src/object/planner.js"
 
 
 const RootModel = { tagName: "div" }
@@ -25,16 +25,16 @@ test("CalendarBinding instance", (test) => {
 
 test("CalendarBinding onCreated", (test) => {
 	return new Promise(resolve => {
-		const diary = new Diary()
+		const planner = new Planner()
 		const date = new Date()
-		diary.calendar.listen("setDate", (data) => {
+		planner.calendar.listen("setDate", (data) => {
 			test.is(data.date.getDate(), date.getDate())
 			test.is(data.date.getFullYear(), date.getFullYear())
 			test.is(data.date.getMonth(), date.getMonth())
 			test.is(data.date.getDay(), date.getDay())
 			resolve()
 		})
-		const binding = new CalendarBinding({ diary })
+		const binding = new CalendarBinding({ planner })
 		test.context.rootBinding.run(CalendarModel, { binding })
 	})
 })

@@ -1,20 +1,20 @@
 import "./main.css"
 
 import { Core } from "domodel"
-import Diary from "./object/diary.js"
-import DiaryModel from "./model/diary.js"
-import DiaryBinding from "./model/diary.binding.js"
+import Planner from "./object/planner.js"
+import PlannerModel from "./model/planner.js"
+import PlannerBinding from "./model/planner.binding.js"
 
 import Persistence from "./persistence/persistence.js"
 
 window.addEventListener("load", function() {
 
-	const diary = new Diary()
+	const planner = new Planner()
 
-	Persistence({ diary })
+	Persistence({ planner })
 
-	Core.run(DiaryModel, {
-		binding: new DiaryBinding({ diary }),
+	Core.run(PlannerModel, {
+		binding: new PlannerBinding({ planner }),
 		parentNode: document.body
 	})
 

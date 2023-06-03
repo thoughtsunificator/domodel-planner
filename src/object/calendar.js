@@ -47,6 +47,15 @@ class Calendar extends Observable {
 				week = new Week(week.number + 1)
 			}
 		}
+		const lastWeek = this.weeks[this.weeks.length -1]
+		const lastWeekDaysCount = lastWeek.days.length
+		const lastWeekAvailableSlots = 7 - lastWeekDaysCount
+		for(let i = 0; i < lastWeekAvailableSlots;i++) {
+			const nextMonthDate = new Date(date)
+			nextMonthDate.setMonth(date.getMonth() + 1)
+			nextMonthDate.setDate(i + 1)
+			lastWeek.days.push(new Day(nextMonthDate, true))
+		}
 	}
 
 	setDate(date) {

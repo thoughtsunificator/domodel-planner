@@ -1,32 +1,38 @@
 export const ITEM_NAME = "events"
 
-function save(diary) {
-	localStorage.setItem(ITEM_NAME, diary.calendar.events.toString())
+function save(planner) {
+	localStorage.setItem(ITEM_NAME, planner.calendar.events.toString())
 }
 
 export default properties => {
 
-	const { diary } = properties
+	const { planner } = properties
 
-	diary.firstRun = localStorage.getItem(ITEM_NAME) === null
+	planner.firstRun = localStorage.getItem(ITEM_NAME) === null
 
-	if(diary.firstRun == false) {
-			const events = JSON.parse(localStorage.getItem(ITEM_NAME))
-			for(const event of events) {
-				diary.calendar.addEvent(event.title, new Date(event.date))
-			}
+	if(planner.firstRun == false) {
+		const events = JSON.parse(localStorage.getItem(ITEM_NAME))
+		for(const event of events) {
+			planner.calendar.addEvent(event.title, new Date(event.date))
+		}
 	}
 
-	// diary.events.listen("add", () => save(diary))
+	if(localStorage.getItem("currentDate")) {
+		planner.calendar.date = new Date(localStorage.getItem("currentDate"))
+	}
 
-	// diary.events.listen("update", () => save(diary))
+	// planner.events.listen("add", () => save(planner))
 
-	// diary.events.listen("remove", () => save(diary))
+	// planner.events.listen("update", () => save(planner))
 
-	diary.calendar.events.listen("added", () => save(diary))
+	planner.calendar.listen("setDate", () => {
+		localStorage.setItem("currentDate", planner.calendar.date)
+	})
 
-	// diary.listen("imported", () => save(diary))
+	planner.calendar.events.listen("added", () => save(planner))
 
-	diary.listen("reset", () => localStorage.removeItem(ITEM_NAME))
+	// planner.listen("imported", () => save(planner))
+
+	planner.listen("reset", () => localStorage.removeItem(ITEM_NAME))
 
 }

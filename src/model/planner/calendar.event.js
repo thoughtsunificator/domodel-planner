@@ -17,8 +17,8 @@ class CalendarEventListener extends EventListener {
 	 * @example calendar.emit("setDate", { date: new Date() })
 	 */
 	setDate(data) {
-		const { diary } = this.properties
-		const { calendar } = diary
+		const { planner } = this.properties
+		const { calendar } = planner
 
 		const date = new Date(data.date)
 		this.identifier.date.textContent = date.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
@@ -43,8 +43,8 @@ class CalendarEventListener extends EventListener {
 	 * @property {number} year
 	 */
 	setYear(year) {
-		const { diary } = this.properties
-		const { calendar } = diary
+		const { planner } = this.properties
+		const { calendar } = planner
 
 		const date = new Date(calendar.date)
 		date.setYear(year)

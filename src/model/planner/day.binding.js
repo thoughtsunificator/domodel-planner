@@ -9,7 +9,7 @@ class DayBinding extends Binding {
 
 	/**
 	 * @param {object} properties
-	 * @param {Diary}  properties.diary
+	 * @param {Planner}  properties.planner
 	 * @param {Day}    properties.day
 	 */
 	constructor(properties) {
@@ -18,13 +18,13 @@ class DayBinding extends Binding {
 
 	onCreated() {
 
-		const { diary, day } = this.properties
+		const { planner, day } = this.properties
 
-		if(diary.calendar.events.byDate(day.date).length >= 1) {
+		if(planner.calendar.events.byDate(day.date).length >= 1) {
 			this.root.classList.add("content")
 		}
 
-		this.root.addEventListener("click", () => diary.calendar.emit("setDate", { date: day.date }))
+		this.root.addEventListener("click", () => planner.calendar.emit("setDate", { date: day.date }))
 
 	}
 

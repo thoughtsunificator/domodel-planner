@@ -12,7 +12,7 @@ class WeekBinding extends Binding {
 
 	/**
 	 * @param {object} properties
-	 * @param {Diary}  properties.diary
+	 * @param {Planner}  properties.planner
 	 * @param {Day}    properties.week
 	 */
 	constructor(properties) {
@@ -21,7 +21,7 @@ class WeekBinding extends Binding {
 
 	onCreated() {
 
-		const { diary, week } = this.properties
+		const { planner, week } = this.properties
 
 		for(const day of week.days) {
 			this.run(DayModel(day), { binding: new DayBinding({ day }) })

@@ -1,11 +1,10 @@
-import CalendarModel from "./diary/calendar.js"
+import CalendarModel from "./planner/calendar.js"
 
-import CalendarBinding from "./diary/calendar.binding.js"
+import CalendarBinding from "./planner/calendar.binding.js"
 
-export default data => ({
+export default {
 	tagName: "div",
-	id: "diary",
-	style: "display: contents",
+	id: "planner",
 	children: [
 		{
 			tagName: "div",
@@ -42,4 +41,4 @@ export default data => ({
 			binding: CalendarBinding
 		}
 	]
-})
+}

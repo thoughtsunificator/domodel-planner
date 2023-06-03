@@ -2,12 +2,12 @@ import test from "ava"
 import { JSDOM } from "jsdom"
 import { Core, Binding } from "domodel"
 
-import DayModel from "../../../src/model/view/diary/day.js"
+import DayModel from "../../src/model/view/planner/day.js"
 
-import DayBinding from "../../../src/model/view/diary/day.binding.js"
+import DayBinding from "../../src/model/view/planner/day.binding.js"
 
-import Diary from "../../../src/object/diary.js"
-import Day from "../../../src/object/day.js"
+import Planner from "../../src/object/planner.js"
+import Day from "../../src/object/day.js"
 
 const RootModel = { tagName: "div" }
 
@@ -24,17 +24,17 @@ test("DayBinding instance", (test) => {
 })
 
 test("DayBinding onCreated", (test) => {
-	const diary = new Diary()
+	const planner = new Planner()
 	const day = new Day(new Date())
-	const binding = new DayBinding({ diary, day })
+	const binding = new DayBinding({ planner, day })
 	test.context.rootBinding.run(DayModel(day), { binding })
 	test.false(binding.root.classList.contains("content"))
 })
 
 test("DayBinding onCreated grayed", (test) => {
-	const diary = new Diary()
+	const planner = new Planner()
 	const day = new Day(new Date(), true)
-	const binding = new DayBinding({ diary, day })
+	const binding = new DayBinding({ planner, day })
 	test.context.rootBinding.run(DayModel(day), { binding })
 	test.false(binding.root.classList.contains("content"))
 	test.true(binding.root.classList.contains("grayed"))
@@ -42,11 +42,11 @@ test("DayBinding onCreated grayed", (test) => {
 
 test("DayBinding click", test => {
 	return new Promise(resolve => {
-		const diary = new Diary()
+		const planner = new Planner()
 		const day = new Day(new Date())
-		const binding = new DayBinding({ diary, day })
+		const binding = new DayBinding({ planner, day })
 		test.context.rootBinding.run(DayModel(day), { binding })
-		diary.calendar.listen("setDate", data => {
+		planner.calendar.listen("setDate", data => {
 			test.deepEqual(data.date, day.date)
 			resolve()
 		})

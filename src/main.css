@@ -31,10 +31,6 @@ button:not(:disabled):hover {
 	opacity: 0.5;
 }
 
-.router {
-	display: contents;
-}
-
 .pagination-controls {
 	margin-bottom: var(--SIZE_MEDIUM)
 }

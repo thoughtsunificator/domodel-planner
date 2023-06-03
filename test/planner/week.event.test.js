@@ -2,13 +2,7 @@ import test from "ava"
 import { JSDOM } from "jsdom"
 import { Core, Binding, EventListener } from "domodel"
 
-import WeekModel from "../../../src/model/view/diary/week.js"
-
-import WeekBinding from "../../../src/model/view/diary/week.binding.js"
-
-import WeekEventListener from "../../../src/model/view/diary/week.event.js"
-
-import Diary from "../../../src/object/diary.js"
+import WeekEventListener from "../../src/model/view/planner/week.event.js"
 
 
 const RootModel = { tagName: "div" }

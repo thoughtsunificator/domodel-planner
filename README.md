@@ -1,1 +1,3 @@
-# domodel-skeleton
+# domodel-planner
+
+Minimalist planner app.

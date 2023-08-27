@@ -16,7 +16,12 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          echo "$CNAME" > public/CNAME
+          npm run build
+          touch dist/.nojekyll
+        env:
+          CNAME: ${{ vars.CNAME }}
 
       - name: Push
         uses: s0/git-publish-subdir-action@develop

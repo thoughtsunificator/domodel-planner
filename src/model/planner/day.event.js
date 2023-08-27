@@ -31,7 +31,6 @@ class DayEventListener extends EventListener {
 	select() {
 		// TODO add new Event with RTE and persist on blur if title is not empty
 		this.root.classList.add("active")
-		this.root.scrollIntoView()
 	}
 
 	/**

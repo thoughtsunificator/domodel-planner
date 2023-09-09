@@ -16,6 +16,6 @@
 	grid-column: span 2;
 	grid-auto-rows: max-content;
 	grid-gap: 10px;
-	padding: 10px;
+	padding: 30px;
 	background-color: #402020;
 }

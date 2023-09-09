@@ -21,7 +21,6 @@ export default class extends Binding {
 
 		const { planner, day, } = this.properties
 
-
 		this.root.addEventListener("click", event => {
 			if(event.target === this.root) {
 				planner.calendar.events.emit("add", { date: day.date, title: "", day })

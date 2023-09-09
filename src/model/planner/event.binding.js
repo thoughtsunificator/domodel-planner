@@ -12,14 +12,21 @@ export default class extends Binding {
 
 		const { planner, day } = this.properties
 
+		let editing = false
+
 		this.identifier.editor.addEventListener("blur", () => {
-			if(this.properties.event.title.trim() === "") {
+			if(editing === day && this.properties.event.title.trim() === "") {
 				planner.calendar.events.emit("remove", { event: this.properties.event, day })
+				editing = null
 			}
 		})
 
 		this.identifier.editor.addEventListener("input", () => {
 			planner.calendar.events.emit("update", { event: this.properties.event, form: { title: this.identifier.editor.textContent }, day })
+		})
+
+		this.identifier.editor.addEventListener("focus", () => {
+			editing = day
 		})
 
 		this.identifier.time.addEventListener("input", event => {

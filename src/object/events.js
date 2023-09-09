@@ -26,7 +26,7 @@ class Events extends Observable {
 	 * @param {Event} event
 	 */
 	remove(event) {
-		this.list.splice(this.list.indexOf(event), 1)
+		this._list = this.list.filter(element => element !== event)
 	}
 
 	/**
